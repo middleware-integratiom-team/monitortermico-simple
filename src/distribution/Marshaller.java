@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Marshaller {
+public class Marshaller implements IMarshaller{
 
 	public byte[] marshall(Message msgToBeMarshalled) throws IOException,
 			InterruptedException {
@@ -22,7 +22,7 @@ public class Marshaller {
 		return byteStream.toByteArray();
 	}
 
-	public Message unmarshall(byte[] msgToBeUnmarshalled) {
+	public Message unmarshall(byte[] msgToBeUnmarshalled) throws IOException, InterruptedException, ClassNotFoundException {
 
 		ByteArrayInputStream byteStream = new ByteArrayInputStream(
 				msgToBeUnmarshalled);

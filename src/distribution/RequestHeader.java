@@ -15,6 +15,7 @@ public class RequestHeader implements Serializable {
 
 
 	public RequestHeader(final String cont, final int rId, final boolean rExpected, final int oKey, final String op){
+		super();
 		this.setContext(cont);
 		this.setRequestId(rId);
 		this.setResponseExpected(rExpected);
