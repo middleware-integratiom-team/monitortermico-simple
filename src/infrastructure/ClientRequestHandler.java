@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import aplication.exceptions.InsufficientMedicoesException;
+
 public class ClientRequestHandler {
 	private String host;
 	private int port;
@@ -35,7 +37,7 @@ public class ClientRequestHandler {
 	}
 
 	public byte [] receive() throws IOException, InterruptedException,
-			ClassNotFoundException {
+			ClassNotFoundException, InsufficientMedicoesException {
 
 		byte[] msg = null;
 		

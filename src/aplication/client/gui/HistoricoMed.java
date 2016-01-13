@@ -2,7 +2,12 @@ package aplication.client.gui;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -13,18 +18,10 @@ import javax.swing.table.JTableHeader;
 
 import aplication.IMonitor;
 import aplication.Medicao;
-import aplication.TipoGrandeza;
 import aplication.client.datamodel.MedicaoTableModel;
 import aplication.exceptions.InsufficientMedicoesException;
 
-import javax.swing.JButton;
-
 import commonservices.naming.NamingProxy;
-
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.UnknownHostException;
-import java.util.List;
 
 public class HistoricoMed {
 	private JFrame frmHistoricoMed;

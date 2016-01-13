@@ -5,10 +5,11 @@ import infrastructure.ClientRequestHandler;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import aplication.exceptions.InsufficientMedicoesException;
+
 public class Requestor {
 
-	public Termination invoke(Invocation inv) throws UnknownHostException,
-			IOException, Throwable {
+	public Termination invoke(Invocation inv) throws UnknownHostException, IOException, InsufficientMedicoesException, Throwable {
 		ClientRequestHandler crh = new ClientRequestHandler(inv
 				.getClientProxy().getHost(), inv.getClientProxy().getPort());
 		Marshaller marshaller = new Marshaller();
@@ -32,8 +33,12 @@ public class Requestor {
 		// send marshalled message
 		crh.send(msgMarshalled);
 
-		// receive reply message
-		msgToBeUnmarshalled = crh.receive();
+		try{
+			// receive reply message
+			msgToBeUnmarshalled = crh.receive();
+		} catch(InsufficientMedicoesException e) {
+			throw e;
+		}
 
 		// unmarshall reply message
 		msgUnmarshalled = (Message) marshaller.unmarshall(msgToBeUnmarshalled);

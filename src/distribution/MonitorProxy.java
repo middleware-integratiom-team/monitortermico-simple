@@ -113,6 +113,8 @@ public class MonitorProxy extends ClientProxy implements IMonitor {
 		// invoke Requestor
 		try {
 			ter = requestor.invoke(inv);
+		} catch (InsufficientMedicoesException e) {
+			throw e;
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
