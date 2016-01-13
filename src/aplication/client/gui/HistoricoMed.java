@@ -16,6 +16,7 @@ import aplication.Medicao;
 import aplication.TipoGrandeza;
 import aplication.client.datamodel.MedicaoTableModel;
 import aplication.exceptions.InsufficientMedicoesException;
+import aplication.exceptions.ServerNotFoundException;
 
 import javax.swing.JButton;
 
@@ -83,11 +84,10 @@ public class HistoricoMed {
 					}
 				} catch(InsufficientMedicoesException e){
 					JOptionPane.showMessageDialog(frmHistoricoMed, "Quantidade de medi\u00E7\u00F5es insuficientes.");
-				} catch (UnknownHostException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (Throwable e) {
+				} catch (ServerNotFoundException se) {
+					JOptionPane.showMessageDialog(null, se.getMessage());
+				}  catch (Throwable e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -101,10 +101,8 @@ public class HistoricoMed {
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
-	
 	public JTable getTable() {
 		return table;
 	}

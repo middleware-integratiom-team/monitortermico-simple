@@ -5,7 +5,7 @@ import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 
 import commonservices.naming.NamingProxy;
-
+import distribution.ClientProxy;
 import distribution.MonitorInvoker;
 import distribution.MonitorProxy;
 
@@ -17,7 +17,7 @@ public class MonitorServer implements Serializable {
 		MonitorInvoker monitorInvoker = new MonitorInvoker();
 		
 		//remote object
-		MonitorProxy monitorProxy = new MonitorProxy();
+		ClientProxy monitorProxy = new ClientProxy();
 		monitorProxy.setHost("localhost");
 		monitorProxy.setPort(2001);
 		

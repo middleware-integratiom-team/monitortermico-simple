@@ -10,6 +10,7 @@ import aplication.IMonitor;
 import aplication.Medicao;
 import aplication.TipoGrandeza;
 import aplication.exceptions.InsufficientMedicoesException;
+import aplication.exceptions.ServerNotFoundException;
 
 public class MonitorProxy extends ClientProxy implements IMonitor {
 
@@ -60,7 +61,7 @@ public class MonitorProxy extends ClientProxy implements IMonitor {
 	}
 
 	@Override
-	public Medicao getMedicaoAnterior() {
+	public Medicao getMedicaoAnterior() throws ServerNotFoundException {
 		Invocation inv = new Invocation();
 		Termination ter = new Termination();
 		ArrayList<Object> parameters = new ArrayList<Object>();
@@ -92,7 +93,7 @@ public class MonitorProxy extends ClientProxy implements IMonitor {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medicao> getCincoUltimasMedicoes()
-			throws InsufficientMedicoesException {
+			throws ServerNotFoundException, InsufficientMedicoesException {
 		Invocation inv = new Invocation();
 		Termination ter = new Termination();
 		ArrayList<Object> parameters = new ArrayList<Object>();
@@ -114,6 +115,7 @@ public class MonitorProxy extends ClientProxy implements IMonitor {
 		try {
 			ter = requestor.invoke(inv);
 		} catch (Throwable e) {
+			System.out.println("aqui! MonitorProxy");
 			e.printStackTrace();
 		}
 

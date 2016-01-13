@@ -8,13 +8,20 @@ import aplication.Medicao;
 import aplication.TipoGrandeza;
 import aplication.server.MonitorImpl;
 
-public class MonitorInvoker {
+public class MonitorInvoker extends AbstractInvoker{
 
+	public MonitorInvoker(){
+		super();
+	}
+	
 	public void invoke(ClientProxy clientProxy) throws IOException, Throwable {
+		
 		ServerRequestHandler srh = new ServerRequestHandler(
 				clientProxy.getPort());
+		
 		byte[] msgToBeUnmarshalled = null;
 		byte[] msgMarshalled = null;
+		
 		Message msgUnmarshalled = new Message();
 		Marshaller mrsh = new Marshaller();
 		Termination ter = new Termination();
