@@ -87,7 +87,7 @@ public class MonitorInvoker extends AbstractInvoker{
 					_add_msgToBeMarshalled = new Message(new MessageHeader(
 							"InsufficientMedicoesException", 0, false, 1, 0),
 							new MessageBody(null, null, new ReplyHeader("", 0,
-									0), new ReplyBody(ter.getResult())));
+									0), new ReplyBody(null)));
 				}
 
 				// @ Marshall the response
